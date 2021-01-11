@@ -19,7 +19,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@wsd/core": ["src/app/core"],
+      "@wsd/environment": ["src/environments/environment.ts"]
+    }
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

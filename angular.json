@@ -31,9 +31,12 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -127,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "webinar-scully-demo"
+  "defaultProject": "webinar-scully-demo",
+  "cli": {
+    "analytics": "ee31ce61-1977-4344-afc5-50a2cc587e5d"
+  }
 }
