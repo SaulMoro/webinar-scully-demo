@@ -21,8 +21,11 @@
       "dom"
     ],
     "paths": {
+      "@wsd/app": ["src/app"],
       "@wsd/core": ["src/app/core"],
-      "@wsd/environment": ["src/environments/environment.ts"]
+      "@wsd/core/layout": ["src/app/core/layout"],
+      "@wsd/environment": ["src/environments/environment.ts"],
+      "@wsd/shared": ["src/app/shared"]
     }
   },
   "angularCompilerOptions": {

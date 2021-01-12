@@ -11,4 +11,10 @@ import { PostComponent } from './post.component';
   declarations: [PostComponent],
   imports: [PostRoutingModule]
 })
-export class PostModule { }
+export class PostModule {
+
+  /**
+   * Module constructor
+   */
+  constructor() { }
+}

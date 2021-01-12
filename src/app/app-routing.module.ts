@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./features/home/home.module')
-      .then(module => module.HomeModule)
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/characters'
   },
   {
     path: 'characters',
@@ -29,11 +29,6 @@ const routes: Routes = [
       .then(module => module.PostModule)
   },
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/home'
-  },
-  {
     path: '**',
     loadChildren: () => import('./features/not-found/not-found.module')
       .then(module => module.NotFoundModule)
@@ -44,4 +39,10 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+  /**
+   * Module constructor
+   */
+  constructor() { }
+}

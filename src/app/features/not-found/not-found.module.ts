@@ -11,4 +11,10 @@ import { NotFoundComponent } from './not-found.component';
   declarations: [NotFoundComponent],
   imports: [NotFoundRoutingModule]
 })
-export class NotFoundModule { }
+export class NotFoundModule {
+
+  /**
+   * Module constructor
+   */
+  constructor() { }
+}

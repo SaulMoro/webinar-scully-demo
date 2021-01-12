@@ -11,4 +11,10 @@ import { BlogComponent } from './blog.component';
   declarations: [BlogComponent],
   imports: [BlogRoutingModule]
 })
-export class BlogModule { }
+export class BlogModule {
+
+  /**
+   * Module constructor
+   */
+  constructor() { }
+}

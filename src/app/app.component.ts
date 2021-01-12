@@ -1,8 +1,11 @@
 // Angular
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+// Ngx-translate
+import { TranslateService } from '@ngx-translate/core';
+
 // @wsd packages
-import { MenuItem } from '@wsd/core';
+import { MenuItem } from '@wsd/core/layout';
 
 @Component({
   selector: 'wsd-root',
@@ -13,8 +16,24 @@ import { MenuItem } from '@wsd/core';
 export class AppComponent {
 
   public readonly menu: MenuItem[] = [
-    { label: 'Inicio', url: '/home' },
     { label: 'Personajes', url: '/characters' },
     { label: 'Blog', url: '/blog' }
   ];
+
+  /**
+   * Component constructor
+   *
+   * @param translateService Ngx-translate service
+   */
+  constructor(private readonly translateService: TranslateService) {
+    this.initializeTranslate();
+  }
+
+  /**
+   * Initialize ngx-translate
+   */
+  private initializeTranslate(): void {
+    this.translateService.setDefaultLang('es');
+    this.translateService.use('es');
+  }
 }

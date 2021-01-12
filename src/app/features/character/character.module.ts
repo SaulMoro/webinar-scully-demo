@@ -11,4 +11,10 @@ import { CharacterComponent } from './character.component';
   declarations: [CharacterComponent],
   imports: [CharacterRoutingModule]
 })
-export class CharacterModule { }
+export class CharacterModule {
+
+  /**
+   * Module constructor
+   */
+  constructor() { }
+}

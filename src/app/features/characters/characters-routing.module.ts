@@ -14,4 +14,10 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CharactersRoutingModule { }
+export class CharactersRoutingModule {
+
+  /**
+   * Module constructor
+   */
+  constructor() { }
+}
