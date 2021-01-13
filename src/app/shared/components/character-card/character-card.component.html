@@ -1,1 +1,15 @@
-<h1>Character card component works!</h1>
+<div class="card">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="character?.image" [alt]="character?.name + ' image'" class="card-img" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ character?.name }}</h5>
+        <p class="mb-0"><strong>Estado: </strong> {{ character?.status }}</p>
+        <p class="mb-0"><strong>Especie: </strong> {{ character?.species }}</p>
+        <p class="mb-0"><strong>Género: </strong>{{ character?.gender }}</p>
+      </div>
+    </div>
+  </div>
+</div>

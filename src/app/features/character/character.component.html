@@ -1,1 +1,8 @@
-<h1>Character component works!</h1>
+<ng-container *ngIf="character$ | async as character; else showLoading">
+  <pre>{{ character | json }}</pre>
+</ng-container>
+<ng-template #showLoading>
+  <div class="text-center p-5">
+    <div class="spinner-border" role="status"></div>
+  </div>
+</ng-template>

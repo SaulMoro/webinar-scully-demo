@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 // Rxjs
 import { Observable, of } from 'rxjs';
-import { expand, reduce } from 'rxjs/operators';
+import { expand, reduce, tap } from 'rxjs/operators';
 
 // @wsd packages
 import { environment } from '@wsd/environment';
@@ -17,6 +17,7 @@ import { Character, CharactersResponse } from '../interfaces';
 })
 export class CharactersService {
   private readonly apiPath = '/character';
+  private cachedCharacters: Character[] = [];
 
   /**
    * Service constructor
@@ -32,10 +33,31 @@ export class CharactersService {
    */
   public getCharacters(): Observable<Character[]> {
 
+    if (this.cachedCharacters && this.cachedCharacters.length) {
+      return of(this.cachedCharacters);
+    }
+
     return this.getCharactersPage(`${environment.baseUrl}${this.apiPath}`).pipe(
       expand(response => response.info.next ? this.getCharactersPage(response.info.next) : of()),
-      reduce((acc, response) => acc.concat(response.results), [] as Character[])
+      reduce((acc, response) => acc.concat(response.results), [] as Character[]),
+      tap(characters => this.cachedCharacters = characters)
     );
+  }
+
+  /**
+   * Get character
+   *
+   * @param id Character id
+   * @returns Observable with character
+   */
+  public getCharacter(id: number): Observable<Character> {
+    const character = this.cachedCharacters.find(characterFind => characterFind.id === id) as Character;
+
+    if (character) {
+      return of(character);
+    }
+
+    return this.httpClient.get<Character>(`${environment.baseUrl}${this.apiPath}/${id}`);
   }
 
   /**

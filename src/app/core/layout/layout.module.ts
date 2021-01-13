@@ -4,7 +4,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // Components
-import { FooterComponent, HeaderComponent } from './components';
+import { HeaderComponent } from './components';
 import { LayoutComponent } from './layout.component';
 
 const EXPORTED_DECLARATIONS = [LayoutComponent];
@@ -12,7 +12,6 @@ const EXPORTED_DECLARATIONS = [LayoutComponent];
 @NgModule({
   declarations: [
     ...EXPORTED_DECLARATIONS,
-    FooterComponent,
     HeaderComponent
   ],
   imports: [
