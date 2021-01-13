@@ -2,8 +2,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+// Scullyio
+import { TransferStateService } from '@scullyio/ng-lib';
+
 // Rxjs
-import { Observable } from 'rxjs';
+import { concat, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 // @wsd packages
 import { Character, CharactersService } from '@wsd/shared';
@@ -22,16 +26,23 @@ export class CharacterComponent implements OnInit {
    *
    * @param activatedRoute Angular activated route service
    * @param charactersService Characters service
+   * @param transferStateService Scullyio transfer state service
    */
   constructor(
     private readonly activatedRoute: ActivatedRoute,
-    private readonly charactersService: CharactersService) { }
+    private readonly charactersService: CharactersService,
+    private readonly transferStateService: TransferStateService) { }
 
   /**
    * Fired on component initialization
    */
   public ngOnInit(): void {
     const characterId = this.activatedRoute.snapshot.paramMap.get('id') as string;
-    this.character$ = this.charactersService.getCharacter(parseInt(characterId, 10));
+    const character$ = this.charactersService.getCharacter(parseInt(characterId, 10));
+
+    this.character$ = concat(
+      this.transferStateService.useScullyTransferState('character', character$).pipe(take(1)),
+      character$
+    );
   }
 }

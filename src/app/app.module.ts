@@ -3,6 +3,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// Scullyio
+import { ScullyLibModule } from '@scullyio/ng-lib';
+
 // @wsd packages
 import { CoreModule } from '@wsd/core';
 
@@ -18,7 +21,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     BrowserModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    ScullyLibModule
   ],
   bootstrap: [AppComponent]
 })
