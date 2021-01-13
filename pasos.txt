@@ -1,6 +1,0 @@
-1. Presentar el proyecto SPA, en su rama Master y su rendimiento.
-2. Cambiar a una rama feature/scully donde meteremos Scully
-3. Añadir scully con ng add @scullyio/init
-4. Ejecutar npm run scully y veremos que nos aparece un warning diciendo que las rutas dinámicas :id no pueden resolverse
-5. Enseñar el resultado de las rutas generadas
-6. Ver el resultado con npm run scully:serve

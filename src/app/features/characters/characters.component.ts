@@ -40,6 +40,6 @@ export class CharactersComponent implements OnInit {
    * @param characterId Character id
    */
   public characterClickHandler(characterId: number): void {
-    this.router.navigate(['/characters', characterId]);
+    this.router.navigate(['/', characterId]);
   }
 }

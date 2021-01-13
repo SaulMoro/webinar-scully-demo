@@ -5,23 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: '/characters'
-  },
-  {
-    path: 'characters',
     loadChildren: () => import('./features/characters/characters.module')
       .then(module => module.CharactersModule)
   },
   {
-    path: 'characters/:id',
+    path: ':id',
     loadChildren: () => import('./features/character/character.module')
       .then(module => module.CharacterModule)
-  },
-  {
-    path: '**',
-    loadChildren: () => import('./features/not-found/not-found.module')
-      .then(module => module.NotFoundModule)
   }
 ];
 

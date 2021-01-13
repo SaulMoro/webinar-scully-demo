@@ -37,7 +37,7 @@ export class CharactersService {
       return of(this.cachedCharacters);
     }
 
-    return this.getCharactersPage(`${environment.baseUrl}${this.apiPath}`).pipe(
+    return this.httpClient.get<CharactersResponse>(`${environment.baseUrl}${this.apiPath}`).pipe(
       map(response => response.results),
       tap(characters => this.cachedCharacters = characters)
     );
@@ -50,22 +50,12 @@ export class CharactersService {
    * @returns Observable with character
    */
   public getCharacter(id: number): Observable<Character> {
-    const character = this.cachedCharacters.find(characterFind => characterFind.id === id) as Character;
+    const character = this.cachedCharacters.find(findCharacter => findCharacter.id === id);
 
     if (character) {
       return of(character);
     }
 
     return this.httpClient.get<Character>(`${environment.baseUrl}${this.apiPath}/${id}`);
-  }
-
-  /**
-   * Get characters page
-   *
-   * @param url Page url
-   * @returns Observable with characters response
-   */
-  private getCharactersPage(url: string): Observable<CharactersResponse> {
-    return this.httpClient.get<CharactersResponse>(url);
   }
 }
