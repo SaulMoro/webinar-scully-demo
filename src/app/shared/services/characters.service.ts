@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 // Rxjs
 import { Observable, of } from 'rxjs';
-import { expand, reduce, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 // @wsd packages
 import { environment } from '@wsd/environment';
@@ -38,8 +38,7 @@ export class CharactersService {
     }
 
     return this.getCharactersPage(`${environment.baseUrl}${this.apiPath}`).pipe(
-      expand(response => response.info.next ? this.getCharactersPage(response.info.next) : of()),
-      reduce((acc, response) => acc.concat(response.results), [] as Character[]),
+      map(response => response.results),
       tap(characters => this.cachedCharacters = characters)
     );
   }
