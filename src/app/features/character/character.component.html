@@ -1,5 +1,19 @@
 <ng-container *ngIf="character$ | async as character; else showLoading">
-  <pre>{{ character | json }}</pre>
+  <div class="row">
+    <div class="col-12 col-md-4 col-lg-3">
+      <img [src]="character?.image" [alt]="character?.name + ' image'" class="img-thumbnail" />
+    </div>
+    <div class="col-12 col-md-8 col-lg-9">
+      <h1>{{ character.name }}</h1>
+      <hr />
+      <p class="mb-0"><strong>Estado: </strong>{{ character?.status }}</p>
+      <p class="mb-0"><strong>Especie: </strong>{{ character?.species }}</p>
+      <p class="mb-0"><strong>Tipo: </strong>{{ character?.type || 'Sin determinar' }}</p>
+      <p class="mb-0"><strong>Género: </strong>{{ character?.gender }}</p>
+      <p class="mb-0"><strong>Origen: </strong>{{ character?.origin?.name }}</p>
+      <p class="mb-0"><strong>Localización: </strong>{{ character?.location?.name }}</p>
+    </div>
+  </div>
 </ng-container>
 <ng-template #showLoading>
   <div class="text-center p-5">

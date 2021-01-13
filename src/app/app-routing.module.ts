@@ -19,16 +19,6 @@ const routes: Routes = [
       .then(module => module.CharacterModule)
   },
   {
-    path: 'blog',
-    loadChildren: () => import('./features/blog/blog.module')
-      .then(module => module.BlogModule)
-  },
-  {
-    path: 'blog/:id',
-    loadChildren: () => import('./features/post/post.module')
-      .then(module => module.PostModule)
-  },
-  {
     path: '**',
     loadChildren: () => import('./features/not-found/not-found.module')
       .then(module => module.NotFoundModule)

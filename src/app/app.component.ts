@@ -16,8 +16,7 @@ import { MenuItem } from '@wsd/core/layout';
 export class AppComponent {
 
   public readonly menu: MenuItem[] = [
-    { label: 'Personajes', url: '/characters' },
-    { label: 'Blog', url: '/blog' }
+    { label: 'Personajes', url: '/characters' }
   ];
 
   /**
